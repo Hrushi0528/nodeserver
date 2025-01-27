@@ -4,7 +4,7 @@
   "description": "A simple Node.js server hosted on Render",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server1.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Hrushikesh Dodla",
