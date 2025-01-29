@@ -48,16 +48,16 @@ app.post('/login', async (req, res) => {
    
 
     try {
-        // Find user by email
-        const user = await User.findOne({username});
-        if (!user) {
-            return res.status(400).json({ message: 'Invalid Username' });
-        }
-
+        const user = await User.findOne({email:username});
+        const user1 = await User.findOne({username:username});
+        if (!user && !user1) {
+            return res.status(400).json({ message: 'Invalid Username or Mail' })
+            }
         // Validate password
-        if (!user || user.password !== password) {
+        if ((!user || user.password !== password) && (!user1 || user1.password!== password)){
             return res.status(400).json({ message: 'Wrong Password' });
         }
+
 
         res.json({ message: 'Login successful' });
     } catch (error) {
