@@ -68,6 +68,29 @@ app.post('/login', async (req, res) => {
     }
 });
 
+app.post('/users', async (req, res) => {
+    try {
+        const user = new User(req.body);
+        console.log(req.body)
+        const {username,email,pwd}=req.body;
+
+        const check_uname= await User.findOne({username:username});
+        //Checking if the username already exist.
+        if (check_uname){
+            return res.status(400).json({message:'Username Already Exist',uname:''});
+        }
+        const check_email= await User.findOne({email:email});
+        //Checking if the email already exist.
+        if (check_email){
+            return res.status(400).json({message:'An Account with this Mail already Exist try with another mail.',email:''})
+        }
+        await user.save();
+        res.status(201).send({ message: 'User added successfully'});
+    } catch (err) {
+        res.status(400).send(err);
+    }
+});
+
 // Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
