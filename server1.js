@@ -68,7 +68,7 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.post('/users', async (req, res) => {
+app.post('/signup', async (req, res) => {
     try {
         const user = new User(req.body);
         console.log(req.body)
