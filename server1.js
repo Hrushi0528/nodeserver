@@ -70,10 +70,11 @@ app.post('/login', async (req, res) => {
 
 app.post('/signup', async (req, res) => {
     try {
-        const user = new User(req.body);
         console.log(req.body)
         const {username,email,pwd,re_pwd}=req.body;
+        delete req.body.re_password;
 
+        const user = new User(req.body);
         const check_uname= await User.findOne({username:username});
         //Checking if the username already exist.
         if (check_uname){
@@ -84,10 +85,9 @@ app.post('/signup', async (req, res) => {
         if (check_email){
             return res.status(400).json({message:'Email Already Exist',email:''});
         }
-        if (pwd !== re_pwd){
+        if (password !== re_password){
             return res.status(400).json({message:'Password and Re-Enter password does not Match',password:''});
         }
-        delete user.re_pwd;
         await user.save();
         res.status(201).send({ message: 'User added successfully'});
     } catch (err) {
