@@ -82,7 +82,7 @@ app.post('/signup', async (req, res) => {
         const check_email= await User.findOne({email:email});
         //Checking if the email already exist.
         if (check_email){
-            return res.status(400).json({message:'Email Already Exist',email:''})
+            return res.status(400).json({message:'Email Already Exist',email:''});
         }
         if (pwd !== re_pwd){
             return res.status(400).json({message:'Password and Re-Enter password does not Match',password:''});
