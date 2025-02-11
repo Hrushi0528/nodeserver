@@ -54,11 +54,11 @@ app.post('/login', async (req, res) => {
         const user = await User.findOne({email:username});
         const user1 = await User.findOne({username:username});
         if (!user && !user1) {
-            return res.status(400).json({ message: 'Invalid Username or Mail' })
+            return res.status(400).json({ message: 'Invalid Username or Mail',email:'' });
             }
         // Validate password
         if ((!user || user.password !== password) && (!user1 || user1.password!== password)){
-            return res.status(400).json({ message: 'Wrong Password' });
+            return res.status(400).json({ message: 'Wrong Password',pass:'' });
         }
 
         res.json({ message: 'Login successful' });
