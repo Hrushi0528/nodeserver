@@ -27,7 +27,7 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: true,
               httpOnly: true,
-              maxAge: 30 * 60 * 1000*24,
+              maxAge: 30 * 60 * 1000,
               sameSite:"None",
      } // Set `true` in production with HTTPS
 }));
