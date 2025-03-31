@@ -11,6 +11,7 @@ const key=require('crypto').randomBytes(32).toString('hex'); // Change this to a
 
 
 const app = express();
+app.set("trust proxy", 1);
 app.use(cors({
     origin: "https://hrushi0528.github.io",  // Change to your frontend URL if different
     credentials: true,
