@@ -29,7 +29,7 @@ app.use(session({
     cookie: { secure: true,
               httpOnly: true,
               maxAge: 30 * 60 * 1000,
-              sameSite:"noner",
+              sameSite:"none",
      } // Set `true` in production with HTTPS
 }));
 
