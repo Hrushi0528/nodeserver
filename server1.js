@@ -12,7 +12,7 @@ const key=require('crypto').randomBytes(32).toString('hex'); // Change this to a
 
 const app = express();
 app.use(cors({
-    origin: "https://Hrushi0528.github.io",  // Change to your frontend URL if different
+    origin: "https://hrushi0528.github.io",  // Change to your frontend URL if different
     credentials: true,
     
 }));
